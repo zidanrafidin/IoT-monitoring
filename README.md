@@ -30,7 +30,7 @@ A modern, responsive frontend dashboard for displaying real-time IoT sensor data
 IoT-monitoring/
 ├── index.html # Main dashboard page
 ├── style.css # Custom styles and animations
-├── script.js # JavaScript for dynamic content & charts
-├── images/ # Assets and icons
+├── script.js # JavaScript for charts and dynamic content
+├── images/ # Asset folder
 │ └── thermometer.png # Dashboard icon
-└── README.md # Project documentation (this file)
+└── README.md # Project documentation
