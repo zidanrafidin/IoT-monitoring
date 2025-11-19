@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IoT Monitoring</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header d-flex align-items-center mb-4">
+        <i class="bi bi-thermometer-half fs-3 me-2"></i>
+        <div>
+          <h5 class="mb-0 fw-semibold">IoT Monitor</h5>
+          <small class="text-muted">Suhu & Kelembaban</small>
+        </div>
+      </div>
+
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a class="nav-link active-menu" href="index.html">
+            <i class="bi bi-bar-chart-line me-2"></i> Dashboard
+          </a>
+        </li>
+
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="admin.html">
+            <i class="bi bi-gear me-2"></i> Admin Panel
+          </a>
+        </li>
+      </ul>
+
+      <div class="notif-card mt-4">
+        <div class="d-flex align-items-center mb-1">
+          <i class="bi bi-bell text-danger me-2"></i>
+          <span class="fw-semibold">Notifikasi Aktif</span>
+        </div>
+        <small class="text-muted">2 sensor membutuhkan perhatian</small>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="container-fluid">
+        <div
+          class="header-content d-flex justify-content-between align-items-center mb-4"
+        >
+          <div class="d-flex align-items-center">
+            <button id="sidebarToggle" class="sidebar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+            <div>
+              <h5 class="fw-bold mb-0">Dashboard Monitoring</h5>
+              <small class="text-muted">Terakhir diperbarui: 13.33.05</small>
+            </div>
+          </div>
+          <div class="badge-custom">
+            <i class="bi bi-hdd-stack me-1"></i> 4 Sensor Aktif
+          </div>
+        </div>
+
+        <div
+          class="alert alert-warning d-flex align-items-center mb-4"
+          role="alert"
+        >
+          <i class="bi bi-exclamation-triangle-fill fs-5 me-3"></i>
+          <div>Ada <strong>2 sensor</strong> yang memerlukan perhatian.</div>
+        </div>
+
+        <div class="row g-4 mb-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="card sensor-card shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <h6 class="fw-semibold mb-0">Ruang Server</h6>
+                    <small class="text-muted">Lantai 1</small>
+                  </div>
+                  <span class="status-dot active"></span>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-thermometer-half data-icon text-danger"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="suhu-ruang-server">23.9°C</h4>
+                    <small class="text-muted">Suhu</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-droplet-half data-icon text-primary"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="lembab-ruang-server">67.0%</h4>
+                    <small class="text-muted">Kelembaban</small>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <small class="text-muted">Normal</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card sensor-card shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <h6 class="fw-semibold mb-0">Ruang Meeting</h6>
+                    <small class="text-muted">Lantai 2</small>
+                  </div>
+                  <span class="status-dot active"></span>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-thermometer-half data-icon text-danger"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="suhu-ruang-meeting">27.4°C</h4>
+                    <small class="text-muted">Suhu</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-droplet-half data-icon text-primary"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="lembab-ruang-meeting">
+                      54.2%
+                    </h4>
+                    <small class="text-muted">Kelembaban</small>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-check-circle-fill text-success me-2"></i>
+                  <small class="text-muted">Normal</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card sensor-card shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <h6 class="fw-semibold mb-0">Gudang</h6>
+                    <small class="text-muted">Lantai B1</small>
+                  </div>
+                  <span class="status-dot warning"></span>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-thermometer-half data-icon text-danger"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="suhu-gudang">31.7°C</h4>
+                    <small class="text-muted">Suhu</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-droplet-half data-icon text-primary"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="lembab-gudang">80.3%</h4>
+                    <small class="text-muted">Kelembaban</small>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex align-items-center">
+                  <i
+                    class="bi bi-exclamation-triangle-fill text-warning me-2"
+                  ></i>
+                  <small class="text-muted">Warning</small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="card sensor-card shadow-sm">
+              <div class="card-body">
+                <div
+                  class="d-flex justify-content-between align-items-start mb-2"
+                >
+                  <div>
+                    <h6 class="fw-semibold mb-0">Lab Komputer</h6>
+                    <small class="text-muted">Lantai 3</small>
+                  </div>
+                  <span class="status-dot status-danger"></span>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-thermometer-half data-icon text-danger"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="suhu-lab-komputer">19.7°C</h4>
+                    <small class="text-muted">Suhu</small>
+                  </div>
+                </div>
+                <div class="d-flex align-items-center mt-3">
+                  <i class="bi bi-droplet-half data-icon text-primary"></i>
+                  <div class="ms-3">
+                    <h4 class="fw-bold mb-0" id="lembab-lab-komputer">46.9%</h4>
+                    <small class="text-muted">Kelembaban</small>
+                  </div>
+                </div>
+                <hr />
+                <div class="d-flex align-items-center">
+                  <i class="bi bi-x-circle-fill text-danger me-2"></i>
+                  <small class="text-muted">Alert</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-7">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h6 class="fw-semibold">Trend Suhu (24 Jam)</h6>
+                <small class="text-muted"
+                  >Monitoring suhu ruangan dalam 24 jam terakhir</small
+                >
+                <div div id="chart-suhu" class="mt-3"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5">
+            <div class="card shadow-sm">
+              <div class="card-body">
+                <h6 class="fw-semibold">Trend Kelembaban (24 Jam)</h6>
+                <small class="text-muted"
+                  >Monitoring kelembaban ruangan dalam 24 jam terakhir</small
+                >
+                <div div id="chart-kelembaban" class="mt-3"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

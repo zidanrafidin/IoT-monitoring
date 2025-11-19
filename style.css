@@ -1,0 +1,351 @@
+/* Import Font Poppins yang kamu gunakan */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  /* Warna latar belakang untuk area konten, agar sidebar putih terlihat */
+  background-color: #f9fbfd;
+}
+
+/* =================================
+  KODE CSS SIDEBAR KAMU (SUDAH ADA)
+  =================================
+*/
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #eee;
+  padding: 25px;
+  position: fixed;
+}
+
+.sidebar-header h5 {
+  font-size: 18px;
+}
+
+.nav-link {
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #333;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.nav-link:hover {
+  color: #333 !important;
+  background: #f1f1f1;
+}
+
+.nav-link.active-menu:hover {
+  background: #060410 !important;
+  color: #fff !important;
+}
+
+.active-menu {
+  background: #060410;
+  color: #fff !important;
+}
+
+.active-menu i {
+  color: #fff !important;
+}
+
+.notif-card {
+  background: #f3f6fb;
+  padding: 15px;
+  border-radius: 12px;
+}
+/* =================================
+  AKHIR DARI CSS SIDEBAR
+  =================================
+*/
+
+/* =================================
+  CSS BARU UNTUK KONTEN UTAMA
+  =================================
+*/
+
+.main-content {
+  /* Ini adalah kunci utamanya: */
+  /* Beri margin kiri seukuran lebar sidebar kamu */
+  margin-left: 260px;
+  padding: 30px;
+}
+
+.badge-custom {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.card {
+  border: none;
+  border-radius: 12px;
+  /* Beri sedikit bayangan halus */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.sensor-card .card-body {
+  padding: 24px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-dot.active {
+  background-color: #198754; /* Hijau Bootstrap */
+}
+.status-dot.warning {
+  background-color: #ffc107; /* Kuning Bootstrap */
+}
+.status-dot.status-danger {
+  background-color: #dc3545; /* Merah Bootstrap */
+}
+
+.data-icon {
+  font-size: 1.8rem;
+  width: 40px;
+}
+
+/* Placeholder untuk area grafik */
+.chart-placeholder {
+  width: 100%;
+  height: 250px; /* Atur tinggi sesuai kebutuhan */
+  background: #f8f9fa;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  color: #adb5bd;
+  font-weight: 500;
+  border: 1px dashed #dee2e6;
+}
+
+/* =================================
+  CSS BARU UNTUK HALAMAN ADMIN
+  =================================
+*/
+
+/* Style untuk Tab Admin */
+.admin-tabs .nav-link {
+  color: #555;
+  font-weight: 600;
+  border-bottom-width: 3px;
+}
+.admin-tabs .nav-link.active {
+  border-color: #060410;
+  color: #060410;
+}
+
+/* Style untuk Badge Status di Tabel */
+.badge {
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+  border-radius: 6px;
+}
+
+.status-active {
+  color: #198754;
+  background-color: #d1e7dd;
+}
+
+.status-warning {
+  color: #664d03;
+  background-color: #fff3cd;
+}
+
+.status-inactive {
+  color: #dc3545;
+  background-color: #f8d7da;
+}
+
+/* =================================
+  CSS BARU UNTUK MODAL SENSOR
+  =================================
+*/
+
+/* Hapus garis di atas footer modal */
+.modal-footer {
+  border-top: none;
+}
+
+/* Buat tombol simpan jadi full-width */
+.modal-footer .btn-simpan {
+  width: 100%;
+  padding: 10px 0;
+  font-weight: 600;
+}
+
+/* Buat input field jadi abu-abu seperti di screenshot */
+.modal-body .form-control {
+  background-color: #f3f6fb; /* Warna abu-abu muda */
+  border: none;
+  padding: 12px 15px;
+}
+
+/* Mengganti style tombol aksi di tabel (agar tidak ada garis bawah) */
+.table .btn-link {
+  text-decoration: none;
+}
+
+/* =================================
+   CSS UNTUK HALAMAN NOTIFIKASI
+   =================================
+*/
+
+/* Kotak item notifikasi */
+.notif-item {
+  border: 1px solid #eee;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  transition: 0.2s;
+}
+
+.notif-item:hover {
+  background-color: #fafafa;
+}
+
+/* Kustomisasi Toggle Switch (Bootstrap Default warnanya biru) */
+/* Kita ubah menjadi hitam saat aktif agar sesuai tema admin */
+.form-check-input:checked {
+  background-color: #060410;
+  border-color: #060410;
+}
+
+.form-check-input:focus {
+  border-color: #060410;
+  box-shadow: 0 0 0 0.25rem rgba(6, 4, 16, 0.25);
+}
+
+/* Memperbesar sedikit ukuran switch agar lebih enak diklik */
+.form-switch .form-check-input {
+  width: 2.5em;
+  height: 1.25em;
+  cursor: pointer;
+}
+
+/* =================================
+   CSS UNTUK HALAMAN LAPORAN
+   =================================
+*/
+
+/* Membuat font di tabel laporan sedikit lebih kecil agar muat banyak */
+.table-sm.text-sm {
+  font-size: 0.9rem;
+}
+
+/* Pagination custom color agar sesuai tema hitam-putih */
+.pagination .page-link {
+  color: #333;
+}
+
+.pagination .page-link:focus {
+  box-shadow: 0 0 0 0.25rem rgba(6, 4, 16, 0.25);
+}
+
+.pagination .active .page-link {
+  background-color: #060410;
+  border-color: #060410;
+  color: white;
+}
+
+/* =================================
+   RESPONSIVE DESIGN (MEDIA QUERIES)
+   =================================
+*/
+
+/* Tombol Toggle Sidebar (Sembunyi di Desktop) */
+.sidebar-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #333;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+/* Overlay Gelap saat Sidebar Terbuka di Mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 998; /* Di bawah sidebar, di atas konten */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* --- TAMPILAN MOBILE & TABLET (Di bawah 992px) --- */
+@media (max-width: 991.98px) {
+  /* 1. Sidebar sembunyi ke kiri layar */
+  .sidebar {
+    left: -260px;
+    z-index: 999; /* Paling atas */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Class untuk memunculkan sidebar */
+  .sidebar.mobile-show {
+    left: 0;
+  }
+
+  /* 2. Konten Utama memenuhi layar (margin 0) */
+  .main-content {
+    margin-left: 0;
+    padding: 20px; /* Kurangi padding sedikit */
+  }
+
+  /* 3. Munculkan Tombol Toggle */
+  .sidebar-toggle {
+    display: inline-block;
+  }
+
+  /* Penyesuaian Card Statistik di Laporan agar tidak terlalu sempit */
+  .card h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Penyesuaian Tabel agar bisa discroll horizontal jika sempit */
+  .table-responsive {
+    overflow-x: auto;
+  }
+}
+
+/* --- TAMPILAN HP KECIL (Di bawah 576px) --- */
+@media (max-width: 575.98px) {
+  .header-content h5 {
+    font-size: 1.1rem;
+  }
+
+  /* Sembunyikan subtitle header di HP biar rapi */
+  .header-content small {
+    display: none;
+  }
+
+  /* Button export jadi icon saja biar muat */
+  .header-content .btn {
+    padding: 4px 8px;
+    font-size: 0.85rem;
+  }
+}

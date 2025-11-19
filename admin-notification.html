@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan Notifikasi - IoT Monitoring</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="sidebar">
+      <div class="sidebar-header d-flex align-items-center mb-4">
+        <i class="bi bi-thermometer-half fs-3 me-2"></i>
+        <div>
+          <h5 class="mb-0 fw-semibold">IoT Monitor</h5>
+          <small class="text-muted">Suhu & Kelembaban</small>
+        </div>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item mb-2">
+          <a class="nav-link" href="index.html">
+            <i class="bi bi-bar-chart-line me-2"></i> Dashboard
+          </a>
+        </li>
+        <li class="nav-item mb-2">
+          <a class="nav-link active-menu" href="admin.html">
+            <i class="bi bi-gear me-2"></i> Admin Panel
+          </a>
+        </li>
+      </ul>
+      <div class="notif-card mt-4">
+        <div class="d-flex align-items-center mb-1">
+          <i class="bi bi-bell text-danger me-2"></i>
+          <span class="fw-semibold">Notifikasi Aktif</span>
+        </div>
+        <small class="text-muted">2 sensor membutuhkan perhatian</small>
+      </div>
+    </div>
+
+    <div class="main-content">
+      <div class="container-fluid">
+        <div
+          class="header-content d-flex justify-content-between align-items-center mb-4"
+        >
+          <div class="d-flex align-items-center">
+            <button id="sidebarToggle" class="sidebar-toggle">
+              <i class="bi bi-list"></i>
+            </button>
+
+            <div>
+              <h5 class="fw-bold mb-0">Admin Panel</h5>
+              <small class="text-muted">&nbsp;</small>
+            </div>
+          </div>
+          <a href="#" class="btn btn-sm btn-outline-dark">
+            <i class="bi bi-box-arrow-down me-2"></i>Export Laporan
+          </a>
+        </div>
+
+        <ul class="nav nav-tabs admin-tabs mt-4 mb-4">
+          <li class="nav-item">
+            <a class="nav-link" href="admin.html">
+              <i class="bi bi-hdd-stack me-2"></i>Manajemen Sensor
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="admin-notification.html">
+              <i class="bi bi-bell me-2"></i>Pengaturan Notifikasi
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="admin-reports.html">
+              <i class="bi bi-file-earmark-text me-2"></i>Laporan Data
+            </a>
+          </li>
+        </ul>
+
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <div class="mb-4">
+              <h6 class="fw-semibold mb-0">Pengaturan Notifikasi</h6>
+              <small class="text-muted"
+                >Konfigurasi peringatan dan notifikasi sistem</small
+              >
+            </div>
+
+            <div class="notif-list">
+              <div
+                class="notif-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h6 class="fw-medium mb-1">Temperature High</h6>
+                  <small class="text-muted"
+                    >Ambang batas: 30°C | Aksi: Email + SMS</small
+                  >
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    checked
+                  />
+                </div>
+              </div>
+
+              <div
+                class="notif-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h6 class="fw-medium mb-1">Temperature Low</h6>
+                  <small class="text-muted"
+                    >Ambang batas: 15°C | Aksi: Email</small
+                  >
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    checked
+                  />
+                </div>
+              </div>
+
+              <div
+                class="notif-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h6 class="fw-medium mb-1">Humidity High</h6>
+                  <small class="text-muted"
+                    >Ambang batas: 80% | Aksi: Email</small
+                  >
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                  />
+                </div>
+              </div>
+
+              <div
+                class="notif-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h6 class="fw-medium mb-1">Sensor Offline</h6>
+                  <small class="text-muted"
+                    >Ambang batas: 15 minutes | Aksi: Email + SMS</small
+                  >
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    checked
+                  />
+                </div>
+              </div>
+
+              <div
+                class="notif-item d-flex justify-content-between align-items-center"
+              >
+                <div>
+                  <h6 class="fw-medium mb-1">Low Battery</h6>
+                  <small class="text-muted"
+                    >Ambang batas: 20% | Aksi: Email</small
+                  >
+                </div>
+                <div class="form-check form-switch">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    checked
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
