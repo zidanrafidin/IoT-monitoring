@@ -198,3 +198,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
+// Tambahkan fungsi ini di script.js
+function logout() {
+  localStorage.removeItem("role");
+  // Link href di HTML sudah mengarah ke login.html,
+  // jadi fungsi ini hanya untuk bersih-bersih data sesi.
+}
+
+// Cek Keamanan Sederhana (Opsional - Taruh di paling atas script.js)
+// Ini mencegah User masuk ke Admin page lewat URL, dan sebaliknya.
+document.addEventListener("DOMContentLoaded", function () {
+  const role = localStorage.getItem("role");
+  const path = window.location.pathname;
+
+  // Jika belum login, lempar ke login page (kecuali sedang di login page)
+  if (!role && !path.includes("login.html")) {
+    window.location.href = "login.html";
+  }
+
+  // Jika User mencoba akses halaman Admin
+  if (
+    role === "user" &&
+    (path.includes("admin.html") || path.includes("admin-"))
+  ) {
+    alert("Akses Ditolak! Anda bukan Admin.");
+    window.location.href = "index.html";
+  }
+
+  // Jika Admin mencoba akses Dashboard (Opsional, kalau admin boleh lihat dashboard, hapus blok ini)
+  if (role === "admin" && path.includes("index.html")) {
+    // Biasanya admin boleh lihat dashboard, tapi sesuai request kamu admin ga ada menu dashboard:
+    // window.location.href = 'admin.html';
+  }
+});

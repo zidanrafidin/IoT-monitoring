@@ -25,30 +25,47 @@
         <i class="bi bi-thermometer-half fs-3 me-2"></i>
         <div>
           <h5 class="mb-0 fw-semibold">IoT Monitor</h5>
-          <small class="text-muted">Suhu & Kelembaban</small>
+          <small class="text-muted">User Dashboard</small>
         </div>
       </div>
 
-      <ul class="nav flex-column">
-        <li class="nav-item mb-2">
-          <a class="nav-link active-menu" href="index.html">
-            <i class="bi bi-bar-chart-line me-2"></i> Dashboard
-          </a>
-        </li>
+      <div class="sidebar-menu-content">
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2">
+            <a class="nav-link active-menu" href="index.html">
+              <i class="bi bi-bar-chart-line me-2"></i> Dashboard
+            </a>
+          </li>
+        </ul>
 
-        <li class="nav-item mb-2">
-          <a class="nav-link" href="admin.html">
-            <i class="bi bi-gear me-2"></i> Admin Panel
-          </a>
-        </li>
-      </ul>
-
-      <div class="notif-card mt-4">
-        <div class="d-flex align-items-center mb-1">
-          <i class="bi bi-bell text-danger me-2"></i>
-          <span class="fw-semibold">Notifikasi Aktif</span>
+        <div class="notif-card mt-4">
+          <div class="d-flex align-items-center mb-1">
+            <i class="bi bi-bell text-danger me-2"></i>
+            <span class="fw-semibold">Notifikasi Aktif</span>
+          </div>
+          <small class="text-muted">2 sensor butuh perhatian</small>
         </div>
-        <small class="text-muted">2 sensor membutuhkan perhatian</small>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="user-profile">
+            <div class="user-avatar">U</div>
+            <div style="line-height: 1.2">
+              <span class="d-block fw-bold text-dark" style="font-size: 14px"
+                >User Akun</span
+              >
+              <small class="text-muted" style="font-size: 11px">Operator</small>
+            </div>
+          </div>
+          <a
+            href="login.html"
+            onclick="logout()"
+            class="btn btn-sm btn-outline-danger border-0"
+          >
+            <i class="bi bi-box-arrow-right fs-5"></i>
+          </a>
+        </div>
       </div>
     </div>
     <div class="main-content">

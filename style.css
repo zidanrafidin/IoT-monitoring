@@ -349,3 +349,66 @@ body {
     font-size: 0.85rem;
   }
 }
+/* =================================
+   TAMBAHAN CSS LOGIN & SIDEBAR FOOTER
+   =================================
+*/
+
+/* --- Halaman Login --- */
+.login-card {
+  width: 100%;
+  max-width: 450px;
+}
+
+/* --- Sidebar Footer (Akun & Logout) --- */
+/* Ubah .sidebar agar menggunakan Flexbox column */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  /* Pastikan sidebar tetap scrollable jika kontennya panjang */
+  overflow-y: auto;
+}
+
+/* Konten menu agar mengisi ruang kosong */
+.sidebar-menu-content {
+  flex-grow: 1;
+}
+
+/* Bagian Footer Sidebar */
+.sidebar-footer {
+  margin-top: auto; /* Dorong ke paling bawah */
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #060410;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.logout-btn {
+  color: #dc3545;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: block;
+  margin-top: 5px;
+  transition: 0.2s;
+}
+
+.logout-btn:hover {
+  color: #b02a37;
+}
