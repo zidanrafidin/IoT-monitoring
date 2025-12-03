@@ -87,58 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
       optionsKelembaban
     );
     chartKelembaban.render();
-
-    // --- FUNGSI SIMULASI DATA REAL-TIME ---
-    function updateData() {
-      let suhuServer = 23.9 + (Math.random() - 0.5) * 1;
-      let lembabServer = 67.0 + (Math.random() - 0.5) * 2;
-      let suhuMeeting = 27.4 + (Math.random() - 0.5) * 1;
-      let lembabMeeting = 54.2 + (Math.random() - 0.5) * 2;
-      let suhuGudang = 31.7 + (Math.random() - 0.5) * 1;
-      let lembabGudang = 80.3 + (Math.random() - 0.5) * 2;
-      let suhuLab = 19.7 + (Math.random() - 0.5) * 1;
-      let lembabLab = 46.9 + (Math.random() - 0.5) * 2;
-
-      document.getElementById("suhu-ruang-server").innerText =
-        suhuServer.toFixed(1) + "°C";
-      document.getElementById("lembab-ruang-server").innerText =
-        lembabServer.toFixed(1) + "%";
-      document.getElementById("suhu-ruang-meeting").innerText =
-        suhuMeeting.toFixed(1) + "°C";
-      document.getElementById("lembab-ruang-meeting").innerText =
-        lembabMeeting.toFixed(1) + "%";
-      document.getElementById("suhu-gudang").innerText =
-        suhuGudang.toFixed(1) + "°C";
-      document.getElementById("lembab-gudang").innerText =
-        lembabGudang.toFixed(1) + "%";
-      document.getElementById("suhu-lab-komputer").innerText =
-        suhuLab.toFixed(1) + "°C";
-      document.getElementById("lembab-lab-komputer").innerText =
-        lembabLab.toFixed(1) + "%";
-
-      dataSuhu.shift();
-      dataKelembaban.shift();
-      dataKategoriWaktu.shift();
-      let dataSuhuBaru = parseFloat(suhuGudang.toFixed(1));
-      let dataKelembabanBaru = parseFloat(lembabGudang.toFixed(1));
-      let waktuSekarang = new Date().toLocaleTimeString("id-ID", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-      });
-      dataSuhu.push(dataSuhuBaru);
-      dataKelembaban.push(dataKelembabanBaru);
-      dataKategoriWaktu.push(waktuSekarang);
-      chartSuhu.updateOptions({
-        series: [{ data: dataSuhu }],
-        xaxis: { categories: dataKategoriWaktu },
-      });
-      chartKelembaban.updateOptions({
-        series: [{ data: dataKelembaban }],
-        xaxis: { categories: dataKategoriWaktu },
-      });
-    }
-    setInterval(updateData, 3000);
   } // <-- AKHIR DARI BLOK HALAMAN DASHBOARD
 
   // KODE BARU UNTUK HALAMAN ADMIN (admin.html)
