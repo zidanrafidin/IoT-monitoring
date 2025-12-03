@@ -20,11 +20,17 @@ document.addEventListener("DOMContentLoaded", function () {
       sidebarOverlay.classList.remove("active");
     });
   }
-  // KODE UNTUK HALAMAN DASHBOARD (index.html)
-  // Ini akan berjalan HANYA jika menemukan 'chart-suhu'
-  if (document.getElementById("chart-suhu")) {
+  // ===============================================
+  // KODE UNTUK HALAMAN DASHBOARD (index.html) - VERSI CHART.JS
+  // ===============================================
+
+  // Cek apakah kita sedang di halaman dashboard (cari elemen canvas)
+  const chartSuhuCanvas = document.getElementById("chart-suhu");
+
+  if (chartSuhuCanvas) {
+    // 1. DATA STATIS (Angka yang akan ditampilkan)
     let dataSuhu = [
-      23.1, 23.5, 24.0, 23.8, 24.2, 25.0, 24.5, 24.8, 25.1, 24.9, 25.5, 25.3,
+      23.1, 23.5, 24.0, 23.8, 24.2, 25.5, 24.5, 24.8, 25.1, 24.9, 25.3, 25.1,
     ];
     let dataKelembaban = [67, 68, 66, 69, 70, 72, 71, 70, 69, 73, 75, 74];
     let dataKategoriWaktu = [
@@ -42,52 +48,99 @@ document.addEventListener("DOMContentLoaded", function () {
       "13:55",
     ];
 
-    // --- GRAFIK SUHU ---
-    var optionsSuhu = {
-      series: [{ name: "Suhu", data: dataSuhu }],
-      chart: {
-        height: 250,
-        type: "line",
-        zoom: { enabled: false },
-        toolbar: { show: false },
-      },
-      dataLabels: { enabled: false },
-      stroke: { curve: "smooth", width: 3 },
-      xaxis: { categories: dataKategoriWaktu },
-      yaxis: { labels: { formatter: (val) => val.toFixed(1) + " °C" } },
-      colors: ["#F44336"],
-    };
-    var chartSuhu = new ApexCharts(
-      document.querySelector("#chart-suhu"),
-      optionsSuhu
-    );
-    chartSuhu.render();
-
-    // --- GRAFIK KELEMBABAN ---
-    var optionsKelembaban = {
-      series: [{ name: "Kelembaban", data: dataKelembaban }],
-      chart: { height: 250, type: "area", toolbar: { show: false } },
-      dataLabels: { enabled: false },
-      stroke: { curve: "smooth", width: 3 },
-      xaxis: { categories: dataKategoriWaktu },
-      yaxis: { labels: { formatter: (val) => val.toFixed(0) + " %" } },
-      fill: {
-        type: "gradient",
-        gradient: {
-          shadeIntensity: 1,
-          opacityFrom: 0.7,
-          opacityTo: 0.3,
-          stops: [0, 90, 100],
+    // 2. Konfigurasi Desain Umum (Supaya rapi)
+    const commonOptions = {
+      responsive: true,
+      maintainAspectRatio: false, // Agar grafik menyesuaikan tinggi container (250px)
+      plugins: {
+        legend: { display: false }, // Sembunyikan kotak keterangan (Legend)
+        tooltip: {
+          mode: "index",
+          intersect: false,
         },
       },
-      colors: ["#0D6EFD"],
+      scales: {
+        x: {
+          grid: { display: false }, // Hilangkan garis kotak-kotak vertikal
+          ticks: { maxTicksLimit: 6 }, // Batasi jumlah jam yang muncul biar gak penuh
+        },
+        y: {
+          beginAtZero: false, // Agar grafik fokus di angka data, bukan dari 0
+          grid: { color: "#f0f0f0" }, // Garis horizontal tipis
+        },
+      },
+      elements: {
+        point: { radius: 0, hitRadius: 10 }, // Hilangkan titik bulat (biar clean seperti gambar)
+      },
     };
-    var chartKelembaban = new ApexCharts(
-      document.querySelector("#chart-kelembaban"),
-      optionsKelembaban
-    );
-    chartKelembaban.render();
-  } // <-- AKHIR DARI BLOK HALAMAN DASHBOARD
+
+    // --- RENDER GRAFIK SUHU (Chart.js) ---
+    new Chart(chartSuhuCanvas, {
+      type: "line",
+      data: {
+        labels: dataKategoriWaktu,
+        datasets: [
+          {
+            label: "Suhu",
+            data: dataSuhu,
+            borderColor: "#F44336", // Warna Merah
+            borderWidth: 2,
+            tension: 0.1, // Nilai rendah = garis lebih kaku/tajam
+            fill: false, // Tidak ada warna di bawah garis
+          },
+        ],
+      },
+      options: {
+        ...commonOptions,
+        scales: {
+          ...commonOptions.scales,
+          y: {
+            ...commonOptions.scales.y,
+            ticks: {
+              callback: function (val) {
+                return val + " °C";
+              },
+            },
+          },
+        },
+      },
+    });
+
+    // --- RENDER GRAFIK KELEMBABAN (Chart.js) ---
+    const chartKelembabanCanvas = document.getElementById("chart-kelembaban");
+    new Chart(chartKelembabanCanvas, {
+      type: "line",
+      data: {
+        labels: dataKategoriWaktu,
+        datasets: [
+          {
+            label: "Kelembaban",
+            data: dataKelembaban,
+            borderColor: "#0D6EFD", // Warna Biru
+            backgroundColor: "rgba(13, 110, 253, 0.2)", // Warna isian transparan (Biru muda)
+            borderWidth: 2,
+            tension: 0.4, // Nilai tinggi = garis melengkung halus (Wave)
+            fill: true, // Aktifkan warna di bawah garis
+          },
+        ],
+      },
+      options: {
+        ...commonOptions,
+        scales: {
+          ...commonOptions.scales,
+          y: {
+            ...commonOptions.scales.y,
+            ticks: {
+              callback: function (val) {
+                return val + " %";
+              },
+            },
+          },
+        },
+      },
+    });
+  }
+  // <-- AKHIR DARI BLOK HALAMAN DASHBOARD
 
   // KODE BARU UNTUK HALAMAN ADMIN (admin.html)
   if (document.querySelector(".admin-tabs")) {
