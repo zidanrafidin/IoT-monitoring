@@ -20,7 +20,7 @@ A modern, responsive frontend dashboard for displaying real-time IoT sensor data
 
 - **Frontend**: HTML5, CSS3, JavaScript
 - **Framework**: Bootstrap 5
-- **Charts**: ApexChart
+- **Charts**: Chart.js
 - **Icons**: Font Awesome
 - **Fonts**: Google Fonts (Poppins)
 
